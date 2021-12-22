@@ -3,8 +3,8 @@ import 'package:merchant_app/features/home/presentation/widgets/tag_tile.dart';
 import 'package:merchant_app/features/products/presentation/pages/products.dart';
 import 'package:merchant_app/utils/utils.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({Key? key}) : super(key: key);
+class TagsScreen extends StatelessWidget {
+  TagsScreen({Key? key}) : super(key: key);
   final TextEditingController tagSearchController = TextEditingController();
   @override
   Widget build(BuildContext context) {

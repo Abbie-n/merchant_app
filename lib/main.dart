@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:merchant_app/features/home/presentation/pages/home.dart';
+import 'package:merchant_app/features/products/presentation/pages/tags.dart';
 import 'package:merchant_app/utils/colors.dart';
 import 'package:merchant_app/utils/widgets/base_widget.dart';
 
@@ -16,7 +16,7 @@ class App extends StatelessWidget {
         primaryColor: AppColors.black,
       ),
       home: BaseWidget(
-        child: HomeScreen(),
+        child: TagsScreen(),
       ),
     );
   }
