@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:merchant_app/utils/utils.dart';
-import 'package:merchant_app/utils/widgets/texts.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({

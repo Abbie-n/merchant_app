@@ -14,21 +14,19 @@ abstract class Failure extends Equatable {
 // General failures
 class ServerFailure extends Failure {
   const ServerFailure(
-      {this.message = 'Oooops! Something went wrong. Please try again'})
+      {final String? message =
+          'Oooops! Something went wrong. Please try again'})
       : super(message: message);
-  final String? message;
 }
 
 class BadRequestFailure extends Failure {
-  const BadRequestFailure({this.message = 'An error occured...'})
+  const BadRequestFailure({final String? message = 'An error occured...'})
       : super(message: message);
-  final String? message;
 }
 
 class NetworkFailure extends Failure {
   const NetworkFailure(
-      {this.message = 'Please check your internet connection and try again'})
+      {final String? message =
+          'Please check your internet connection and try again'})
       : super(message: message);
-
-  final String? message;
 }

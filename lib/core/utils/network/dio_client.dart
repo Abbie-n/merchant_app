@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:merchant_app/core/utils/constants.dart';
 import 'package:merchant_app/core/utils/network/logging.dart';
 
@@ -21,7 +22,7 @@ class DioClient {
         return res;
       }
     } on DioError catch (e) {
-      print(e.response);
+      debugPrint(e.response.toString());
       return e.response!;
     }
   }
