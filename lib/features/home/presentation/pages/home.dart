@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:merchant_app/features/home/presentation/widgets/tag_tile.dart';
+import 'package:merchant_app/features/products/presentation/pages/products.dart';
 import 'package:merchant_app/utils/utils.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -33,8 +34,20 @@ class HomeScreen extends StatelessWidget {
               crossAxisSpacing: 15,
               childAspectRatio: (1 / .6),
             ),
-            itemBuilder: (context, index) => const TagTile(
+            itemBuilder: (context, index) => TagTile(
               tagName: 'Test tag',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (c, a1, a2) => ProductsScreen(),
+                    transitionsBuilder: (c, anim, a2, child) => FadeTransition(
+                        opacity: const AlwaysStoppedAnimation<double>(1),
+                        child: ProductsScreen()),
+                    transitionDuration: const Duration(milliseconds: 500),
+                  ),
+                );
+              },
             ),
             itemCount: 10,
           ),
