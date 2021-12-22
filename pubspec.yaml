@@ -17,11 +17,9 @@ dependencies:
   shared_preferences: ^2.0.8
   # Value equality
   equatable: ^2.0.3
-  # State provider
-  provider: ^6.0.1
+  # State management
+  flutter_bloc: ^7.3.0
   intl: ^0.17.0
-  # Load csv
-  csv: ^5.0.1
   # Functional programming
   dartz: ^0.10.0
   # Automate dependency injection

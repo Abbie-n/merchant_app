@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:merchant_app/features/home/presentation/widgets/tag_tile.dart';
 import 'package:merchant_app/features/products/presentation/pages/products.dart';
+import 'package:merchant_app/features/products/presentation/widgets/tag_tile.dart';
 import 'package:merchant_app/utils/utils.dart';
 
 class TagsScreen extends StatelessWidget {
