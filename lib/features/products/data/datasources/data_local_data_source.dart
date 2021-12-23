@@ -25,6 +25,7 @@ class DataLocalDataSourceImpl implements DataLocalDataSource {
       model = ProductsModel.fromJson(res);
       for (Product p in model.products!) {
         data = (<String>[...p.tags!.split(',')]);
+        data.sort();
       }
     }
 
