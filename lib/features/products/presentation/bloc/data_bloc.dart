@@ -31,7 +31,7 @@ class DataBloc extends Bloc<DataEvent, DataState> {
       final res = await getAllProducts!(NoParams());
       yield res.fold(
         (failure) => Error(message: _mapFailureToMessage(failure)),
-        (res) => Loaded(data: res),
+        (res) => Loaded(),
       );
     } else if (event is GetUniqueTags) {
       yield TagsLoading();

@@ -104,13 +104,21 @@ class ProductModel extends Product {
       bodyHtml: map['body_html'],
       vendor: map['vendor'],
       productType: map['product_type'],
-      createdAt:
-          map['created_at'] != null ? DateTime.parse(map['created_at']) : null,
+      createdAt: map['created_at'] != null
+          ? map['created_at'].runtimeType == String
+              ? DateTime.parse(map['created_at'])
+              : DateTime.fromMillisecondsSinceEpoch(map['created_at'])
+          : null,
       handle: map['handle'],
-      updatedAt:
-          map['updated_at'] != null ? DateTime.parse(map['updated_at']) : null,
+      updatedAt: map['updated_at'] != null
+          ? map['updated_at'].runtimeType == String
+              ? DateTime.parse(map['updated_at'])
+              : DateTime.fromMillisecondsSinceEpoch(map['updated_at'])
+          : null,
       publishedAt: map['published_at'] != null
-          ? DateTime.parse(map['published_at'])
+          ? map['published_at'].runtimeType == String
+              ? DateTime.parse(map['published_at'])
+              : DateTime.fromMillisecondsSinceEpoch(map['published_at'])
           : null,
       templateSuffix: map['template_suffix'],
       status: map['status'],
@@ -244,10 +252,16 @@ class VariantModel extends Variant {
       option1: map['option1'],
       option2: map['option2'],
       option3: map['option3'],
-      createdAt:
-          map['created_at'] != null ? DateTime.parse(map['created_at']) : null,
-      updatedAt:
-          map['updated_at'] != null ? DateTime.parse(map['updated_at']) : null,
+      createdAt: map['created_at'] != null
+          ? map['created_at'].runtimeType == String
+              ? DateTime.parse(map['created_at'])
+              : DateTime.fromMillisecondsSinceEpoch(map['created_at'])
+          : null,
+      updatedAt: map['updated_at'] != null
+          ? map['updated_at'].runtimeType == String
+              ? DateTime.parse(map['updated_at'])
+              : DateTime.fromMillisecondsSinceEpoch(map['updated_at'])
+          : null,
       taxable: map['taxable'],
       barcode: map['barcode'],
       grams: map['grams']?.toInt(),
@@ -361,10 +375,16 @@ class ImageModel extends Image {
       id: map['id']?.toInt(),
       productId: map['product_id']?.toInt(),
       position: map['position']?.toInt(),
-      createdAt:
-          map['created_at'] != null ? DateTime.parse(map['created_at']) : null,
-      updatedAt:
-          map['updated_at'] != null ? DateTime.parse(map['updated_at']) : null,
+      createdAt: map['created_at'] != null
+          ? map['created_at'].runtimeType == String
+              ? DateTime.parse(map['created_at'])
+              : DateTime.fromMillisecondsSinceEpoch(map['created_at'])
+          : null,
+      updatedAt: map['updated_at'] != null
+          ? map['created_at'].runtimeType == String
+              ? DateTime.parse(map['created_at'])
+              : DateTime.fromMillisecondsSinceEpoch(map['updated_at'])
+          : null,
       alt: map['alt'],
       width: map['width']?.toInt(),
       height: map['height']?.toInt(),

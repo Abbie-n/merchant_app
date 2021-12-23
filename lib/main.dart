@@ -6,11 +6,19 @@ import 'package:merchant_app/utils/colors.dart';
 import 'package:merchant_app/utils/widgets/base_widget.dart';
 import 'package:merchant_app/service_locator.dart' as sl;
 
+import 'features/products/presentation/bloc/bloc.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await sl.init();
   Bloc.observer = SimpleBlocObserver();
-  runApp(const App());
+  runApp(
+    BlocProvider<DataBloc>(
+      lazy: false,
+      create: (context) => sl.sl<DataBloc>()..add(GetAllProducts()),
+      child: const App(),
+    ),
+  );
 }
 
 class App extends StatelessWidget {

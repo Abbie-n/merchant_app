@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:merchant_app/core/utils/constants.dart';
 import 'package:merchant_app/core/utils/local_keys.dart';
 import 'package:merchant_app/core/utils/local_storage/shared_preference_client.dart';
@@ -28,9 +29,9 @@ class DataRemoteDataSourceImpl implements DataRemoteDataSource {
     final response = await client.get(params: params);
     ProductsModel data = const ProductsModel();
     if (response != null) {
-      data = ProductsModel.fromJson(response.data!);
-      print(data.toJson());
-      await storage.setString(allProductsKey, jsonEncode(data.toJson()));
+      data = ProductsModel.fromJson(jsonEncode(response.data!));
+      debugPrint('Save to local ::: ${data.toJson()}');
+      await storage.setString(allProductsKey, data.toJson());
     }
   }
 }

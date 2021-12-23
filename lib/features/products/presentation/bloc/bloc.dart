@@ -1,3 +1,3 @@
-export 'browse_bloc.dart';
-export 'browse_event.dart';
-export 'browse_state.dart';
+export 'data_bloc.dart';
+export 'data_event.dart';
+export 'data_state.dart';

@@ -18,14 +18,7 @@ class TagsLoading extends DataState {}
 
 class CategorisedProductsLoading extends DataState {}
 
-class Loaded extends DataState {
-  final void data;
-
-  Loaded({required this.data});
-
-  @override
-  List<Object> get props => [];
-}
+class Loaded extends DataState {}
 
 class TagsLoaded extends DataState {
   final List<String> data;
