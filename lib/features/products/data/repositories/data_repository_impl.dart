@@ -21,30 +21,31 @@ class DataRepositoryImpl implements DataRepository {
       final remoteData = await localDataSource.getUniqueTags();
 
       return Right(remoteData);
-    } on ServerException {
-      return const Left(ServerFailure());
+    } on Exception {
+      return const Left(BadRequestFailure());
     }
   }
 
   @override
-  Future<Either<Failure, Products>> getCategorisedProducts() async {
+  Future<Either<Failure, List<Product>>> getCategorisedProducts(
+      String tag) async {
     try {
-      final remoteData = await localDataSource.getCategorisedProducts();
+      final data = await localDataSource.getCategorisedProducts(tag);
 
-      return Right(remoteData);
-    } on ServerException {
-      return const Left(ServerFailure());
+      return Right(data);
+    } on Exception {
+      return const Left(BadRequestFailure());
     }
   }
 
   @override
   Future<Either<Failure, void>> getAllProducts() async {
     try {
-      final remoteData = await localDataSource.getCategorisedProducts();
+      final res = await remoteDataSource.getAllProducts();
 
-      return Right(remoteData);
-    } on ServerException {
-      return const Left(ServerFailure());
+      return Right(res);
+    } on Exception {
+      return const Left(BadRequestFailure());
     }
   }
 }

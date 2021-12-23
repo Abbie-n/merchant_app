@@ -1,1 +1,2 @@
-const String productsKey = 'PRODDUCTS-KEY';
+const String allProductsKey = 'ALL-PRODDUCTS-KEY';
+const String uniqueTagsKey = 'UNIQUE-TAGS-KEY';

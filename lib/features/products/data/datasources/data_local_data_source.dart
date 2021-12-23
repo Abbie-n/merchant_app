@@ -1,10 +1,11 @@
 import 'package:merchant_app/core/utils/local_keys.dart';
 import 'package:merchant_app/core/utils/local_storage/shared_preference_client.dart';
 import 'package:merchant_app/features/products/data/models/products_model.dart';
+import 'package:merchant_app/features/products/domain/entities/products.dart';
 
 abstract class DataLocalDataSource {
   Future<List<String>> getUniqueTags();
-  Future<ProductsModel> getCategorisedProducts();
+  Future<List<Product>> getCategorisedProducts(String tag);
 }
 
 class DataLocalDataSourceImpl implements DataLocalDataSource {
@@ -16,21 +17,31 @@ class DataLocalDataSourceImpl implements DataLocalDataSource {
 
   @override
   Future<List<String>> getUniqueTags() async {
-    final String? res = storage.getString(productsKey);
+    ProductsModel model = const ProductsModel();
+    final String? res = storage.getString(allProductsKey);
     List<String> data = const <String>[];
     print(res);
-    if (res != null) {}
+    if (res != null) {
+      model = ProductsModel.fromJson(res);
+      for (Product p in model.products!) {
+        data = (<String>[...p.tags!.split(',')]);
+      }
+    }
 
     return data;
   }
 
   @override
-  Future<ProductsModel> getCategorisedProducts() async {
-    final String? res = storage.getString(productsKey);
-    ProductsModel data = const ProductsModel();
+  Future<List<Product>> getCategorisedProducts(String tag) async {
+    final String? res = storage.getString(allProductsKey);
+    ProductsModel model = const ProductsModel();
+    List<Product> data = <Product>[];
     print(res);
     if (res != null) {
-      data = ProductsModel.fromJson(res);
+      model = ProductsModel.fromJson(res);
+      data = model.products!
+          .where((element) => element.tags!.toLowerCase().contains(tag))
+          .toList();
     }
 
     return data;

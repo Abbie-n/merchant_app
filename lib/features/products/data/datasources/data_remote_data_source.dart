@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:merchant_app/core/utils/constants.dart';
 import 'package:merchant_app/core/utils/local_keys.dart';
 import 'package:merchant_app/core/utils/local_storage/shared_preference_client.dart';
 import 'package:merchant_app/core/utils/network/dio_client.dart';
@@ -20,12 +21,16 @@ class DataRemoteDataSourceImpl implements DataRemoteDataSource {
 
   @override
   Future<void> getAllProducts() async {
-    Map<String, dynamic> params = {};
+    Map<String, dynamic> params = {
+      'limit': limit,
+      'access_token': accessToken,
+    };
     final response = await client.get(params: params);
     ProductsModel data = const ProductsModel();
     if (response != null) {
       data = ProductsModel.fromJson(response.data!);
-      await storage.setString(productsKey, jsonEncode(data.toJson()));
+      print(data.toJson());
+      await storage.setString(allProductsKey, jsonEncode(data.toJson()));
     }
   }
 }
