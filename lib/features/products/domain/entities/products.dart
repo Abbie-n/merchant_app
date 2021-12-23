@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 
 class Products extends Equatable {
@@ -9,6 +11,14 @@ class Products extends Equatable {
 
   @override
   List<Object?> get props => [products];
+
+  Map<String, dynamic> toMap() {
+    return {
+      'products': products?.map((x) => x.toMap()).toList(),
+    };
+  }
+
+  String toJson() => json.encode(toMap());
 }
 
 class Product extends Equatable {
@@ -75,6 +85,31 @@ class Product extends Equatable {
       image,
     ];
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'title': title,
+      'body_html': bodyHtml,
+      'vendor': vendor,
+      'product_type': productType,
+      'created_at': createdAt?.millisecondsSinceEpoch,
+      'handle': handle,
+      'updated_at': updatedAt?.millisecondsSinceEpoch,
+      'published_at': publishedAt?.millisecondsSinceEpoch,
+      'template_suffix': templateSuffix,
+      'status': status,
+      'published_scope': publishedScope,
+      'tags': tags,
+      'admin_graphql_api_id': adminGraphqlApiId,
+      'variants': variants?.map((x) => x.toMap()).toList(),
+      'options': options?.map((x) => x.toMap()).toList(),
+      'images': images?.map((x) => x.toMap()).toList(),
+      'image': image?.toMap(),
+    };
+  }
+
+  String toJson() => json.encode(toMap());
 }
 
 class Image extends Equatable {
@@ -120,6 +155,24 @@ class Image extends Equatable {
       adminGraphqlApiId,
     ];
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'product_id': productId,
+      'position': position,
+      'created_at': createdAt?.millisecondsSinceEpoch,
+      'updated_at': updatedAt?.millisecondsSinceEpoch,
+      'alt': alt,
+      'width': width,
+      'height': height,
+      'src': src,
+      'variant_ids': variantIds,
+      'admin_graphql_api_id': adminGraphqlApiId,
+    };
+  }
+
+  String toJson() => json.encode(toMap());
 }
 
 class Option extends Equatable {
@@ -147,6 +200,18 @@ class Option extends Equatable {
       values,
     ];
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'product_id': productId,
+      'name': name,
+      'position': position,
+      'values': values,
+    };
+  }
+
+  String toJson() => json.encode(toMap());
 }
 
 class Variant extends Equatable {
@@ -237,4 +302,37 @@ class Variant extends Equatable {
       adminGraphqlApiId,
     ];
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'product_id': productId,
+      'title': title,
+      'price': price,
+      'sku': sku,
+      'position': position,
+      'inventory_policy': inventoryPolicy,
+      'compare_at_price': compareAtPrice,
+      'fulfillment_service': fulfillmentService,
+      'inventory_management': inventoryManagement,
+      'option1': option1,
+      'option2': option2,
+      'option3': option3,
+      'created_at': createdAt?.millisecondsSinceEpoch,
+      'updated_at': updatedAt?.millisecondsSinceEpoch,
+      'taxable': taxable,
+      'barcode': barcode,
+      'grams': grams,
+      'image_id': imageId,
+      'weight': weight,
+      'weight_unit': weightUnit,
+      'inventory_item_id': inventoryItemId,
+      'inventory_quantity': inventoryQuantity,
+      'old_inventory_quantity': oldInventoryQuantity,
+      'requires_shipping': requiresShipping,
+      'admin_graphql_api_id': adminGraphqlApiId,
+    };
+  }
+
+  String toJson() => json.encode(toMap());
 }

@@ -4,13 +4,13 @@ import 'package:merchant_app/core/usescases/usecase.dart';
 import 'package:merchant_app/features/products/domain/entities/products.dart';
 import 'package:merchant_app/features/products/domain/repositories/data_repository.dart';
 
-class GetProductsUseCase implements UseCase<Products, NoParams> {
+class GetCategorisedProductsUseCase implements UseCase<Products, NoParams> {
   final DataRepository repository;
 
-  GetProductsUseCase(this.repository);
+  GetCategorisedProductsUseCase(this.repository);
 
   @override
   Future<Either<Failure, Products>> call(NoParams params) async {
-    return await repository.getProducts();
+    return await repository.getCategorisedProducts();
   }
 }

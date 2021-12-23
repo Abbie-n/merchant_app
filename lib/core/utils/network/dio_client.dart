@@ -12,10 +12,10 @@ class DioClient {
     ),
   )..interceptors.add(Logging());
 
-  Future<Response<dynamic>?> get(url, {Map<String, dynamic>? params}) async {
+  Future<Response<dynamic>?> get({Map<String, dynamic>? params}) async {
     try {
       final res = await _dio.get(
-        url,
+        '',
         queryParameters: params ?? {},
       );
       if (res.statusCode! == 200) {
