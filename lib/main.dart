@@ -23,6 +23,7 @@ class App extends StatelessWidget {
     return BlocProvider(
       create: (context) => sl.sl<DataBloc>()..add(GetAllProducts()),
       child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: SplashScreen(),
       ),
     );

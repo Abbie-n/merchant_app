@@ -40,17 +40,16 @@ class DataLocalDataSourceImpl implements DataLocalDataSource {
     final String? res = storage.getString(allProductsKey);
     ProductsModel model = const ProductsModel();
     List<Product> data = <Product>[];
-    debugPrint('Local 2 ::: $res');
-    debugPrint('Tag ::: $tag');
     if (res != null) {
       model = ProductsModel.fromJson(res);
 
+      // filters local data to get products with matching tags
       data = model.products!
           .where((element) =>
               element.tags!.toLowerCase().trim().contains(tag.toLowerCase()))
           .toList();
     }
-    print(data.length);
+
     return data;
   }
 }

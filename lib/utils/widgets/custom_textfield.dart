@@ -24,10 +24,10 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      cursorColor: AppColors.white,
+      cursorColor: AppColors.darkGrey,
       cursorWidth: 2,
       style: const TextStyle(
-        color: AppColors.white,
+        color: AppColors.darkGrey,
         fontWeight: FontWeight.w500,
         fontSize: 14,
       ),
@@ -38,13 +38,13 @@ class CustomTextField extends StatelessWidget {
         ),
         hintText: hintText,
         hintStyle: const TextStyle(
-          color: AppColors.white,
+          color: AppColors.darkGrey,
           fontWeight: FontWeight.w500,
           fontSize: 14,
         ),
         prefixIcon: prefixIcon,
         filled: true,
-        fillColor: AppColors.black,
+        fillColor: AppColors.tagColor,
         border: OutlineInputBorder(
           borderSide: const BorderSide(
             color: AppColors.black,
