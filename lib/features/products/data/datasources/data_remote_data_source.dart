@@ -30,7 +30,6 @@ class DataRemoteDataSourceImpl implements DataRemoteDataSource {
     ProductsModel data = const ProductsModel();
     if (response != null) {
       data = ProductsModel.fromJson(jsonEncode(response.data!));
-      debugPrint('Save to local ::: ${data.toJson()}');
       await storage.setString(allProductsKey, data.toJson());
     }
   }

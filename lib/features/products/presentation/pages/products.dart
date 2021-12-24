@@ -1,17 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:merchant_app/features/products/domain/entities/products.dart';
+import 'package:merchant_app/features/products/presentation/widgets/product_tile.dart';
 import 'package:merchant_app/features/products/presentation/widgets/tag_tile.dart';
 import 'package:merchant_app/utils/utils.dart';
 
-class ProductsScreen extends StatelessWidget {
-  ProductsScreen({
+class ProductsScreen extends StatefulWidget {
+  const ProductsScreen({
     Key? key,
-    this.product,
+    this.products,
     this.tag,
   }) : super(key: key);
-  final List<Product>? product;
+  final List<Product>? products;
   final String? tag;
+
+  @override
+  State<ProductsScreen> createState() => _ProductsScreenState();
+}
+
+class _ProductsScreenState extends State<ProductsScreen> {
   final TextEditingController productSearchController = TextEditingController();
+  List<Product>? products = <Product>[];
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      products = widget.products;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return BaseWidget(
@@ -32,26 +49,32 @@ class ProductsScreen extends StatelessWidget {
               Icons.search,
               color: AppColors.darkGrey,
             ),
+            onChanged: (String value) {
+              if (value.isNotEmpty) {
+                setState(() {
+                  products = Helper().searchProducts(
+                      productSearchController.text, widget.products!);
+                });
+              } else {
+                setState(() {
+                  products = widget.products!;
+                });
+              }
+            },
           ),
           const YMargin(20),
           Styles.semiBold(
-            'All tags',
+            'All products',
             color: AppColors.darkGrey,
           ),
           const YMargin(20),
           Expanded(
-            child: GridView.builder(
+            child: ListView.builder(
               shrinkWrap: true,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 25,
-                crossAxisSpacing: 15,
-                childAspectRatio: (1 / .6),
+              itemBuilder: (context, index) => ProductTile(
+                product: products![index],
               ),
-              itemBuilder: (context, index) => TagTile(
-                tagName: product![index].title,
-              ),
-              itemCount: product!.length,
+              itemCount: products!.length,
             ),
           )
         ],

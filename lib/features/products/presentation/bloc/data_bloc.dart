@@ -42,7 +42,6 @@ class DataBloc extends Bloc<DataEvent, DataState> {
       );
     } else if (event is GetCategorisedProducts) {
       yield CategorisedProductsLoading();
-      print(event.tag);
       final res = await getCategorisedProducts!(event.tag);
       yield res.fold(
         (failure) => Error(message: _mapFailureToMessage(failure)),

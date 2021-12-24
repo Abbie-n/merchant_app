@@ -57,10 +57,13 @@ class Styles {
     Color? color,
     TextAlign? align = TextAlign.left,
     String? fontFamily,
+    int? maxLines,
   }) {
     return Text(
       text,
       textAlign: align,
+      maxLines: maxLines,
+      overflow: TextOverflow.ellipsis,
       style: TextStyle(
         fontSize: fontSize,
         fontWeight: FWt.semiBold,
@@ -85,6 +88,21 @@ class Styles {
         fontWeight: FWt.bold,
         color: color,
         fontFamily: fontFamily,
+      ),
+    );
+  }
+
+  static TextSpan spanSemiBold(
+    String text, {
+    double? fontSize = 14,
+    Color? color,
+  }) {
+    return TextSpan(
+      text: text,
+      style: TextStyle(
+        fontSize: fontSize ?? 18.0,
+        fontWeight: FWt.semiBold,
+        color: color,
       ),
     );
   }

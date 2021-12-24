@@ -24,9 +24,12 @@ class TagTile extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Styles.semiBold(
-              tagName!,
-              color: AppColors.textColor,
+            Expanded(
+              child: Styles.semiBold(
+                tagName!,
+                color: AppColors.textColor,
+                maxLines: 1,
+              ),
             ),
             Container(
               height: 35,

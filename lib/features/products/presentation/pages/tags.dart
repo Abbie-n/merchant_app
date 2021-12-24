@@ -67,7 +67,7 @@ class _TagsScreenState extends State<TagsScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => ProductsScreen(
-                        product: state.data,
+                        products: state.data,
                         // tag: tags![index],
                       ),
                     ),
