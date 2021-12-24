@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:merchant_app/core/errors/exceptions.dart';
 import 'package:merchant_app/core/errors/failure.dart';
 import 'package:merchant_app/features/products/data/datasources/data_local_data_source.dart';
 import 'package:merchant_app/features/products/data/datasources/data_remote_data_source.dart';

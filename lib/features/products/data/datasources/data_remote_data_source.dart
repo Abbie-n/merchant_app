@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-import 'package:flutter/material.dart';
 import 'package:merchant_app/core/utils/constants.dart';
 import 'package:merchant_app/core/utils/local_keys.dart';
 import 'package:merchant_app/core/utils/local_storage/shared_preference_client.dart';

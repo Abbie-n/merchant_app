@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:merchant_app/features/products/presentation/pages/tags.dart';
-import 'package:merchant_app/features/products/presentation/widgets/circular_loading_widget.dart';
 import 'package:merchant_app/utils/utils.dart';
 
 import 'products/presentation/bloc/bloc.dart';
@@ -27,9 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: BlocBuilder<DataBloc, DataState>(
           builder: (context, state) {
-            print('Current state ::: $state');
             if (state is TagsLoaded) {
-              print(state.data.isNotEmpty);
               if (state.data.isNotEmpty) {
                 WidgetsBinding.instance!.addPostFrameCallback((_) {
                   Navigator.pushReplacement(

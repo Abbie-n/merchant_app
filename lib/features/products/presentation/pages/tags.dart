@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:merchant_app/core/utils/local_storage/shared_preference_client.dart';
 import 'package:merchant_app/features/products/presentation/bloc/bloc.dart';
 import 'package:merchant_app/features/products/presentation/pages/products.dart';
 import 'package:merchant_app/features/products/presentation/widgets/tag_tile.dart';

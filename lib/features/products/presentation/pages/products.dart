@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:merchant_app/features/products/domain/entities/products.dart';
 import 'package:merchant_app/features/products/presentation/widgets/product_tile.dart';
-import 'package:merchant_app/features/products/presentation/widgets/tag_tile.dart';
 import 'package:merchant_app/utils/utils.dart';
 
 class ProductsScreen extends StatefulWidget {
