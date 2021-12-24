@@ -4,9 +4,14 @@ import 'package:merchant_app/features/products/presentation/widgets/tag_tile.dar
 import 'package:merchant_app/utils/utils.dart';
 
 class ProductsScreen extends StatelessWidget {
-  ProductsScreen({Key? key, this.product}) : super(key: key);
+  ProductsScreen({
+    Key? key,
+    this.product,
+    this.tag,
+  }) : super(key: key);
   final List<Product>? product;
-  final TextEditingController tagSearchController = TextEditingController();
+  final String? tag;
+  final TextEditingController productSearchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return BaseWidget(
@@ -21,7 +26,7 @@ class ProductsScreen extends StatelessWidget {
             ),
           ),
           CustomTextField(
-            controller: tagSearchController,
+            controller: productSearchController,
             hintText: 'Search products',
             prefixIcon: const Icon(
               Icons.search,
@@ -43,10 +48,10 @@ class ProductsScreen extends StatelessWidget {
                 crossAxisSpacing: 15,
                 childAspectRatio: (1 / .6),
               ),
-              itemBuilder: (context, index) => const TagTile(
-                tagName: 'Test product',
+              itemBuilder: (context, index) => TagTile(
+                tagName: product![index].title,
               ),
-              itemCount: 10,
+              itemCount: product!.length,
             ),
           )
         ],
